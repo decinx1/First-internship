@@ -8,39 +8,62 @@
 import pyautogui #Documentacion de librerias(biblotecas) utilizadas ---> https://pyautogui.readthedocs.io/en/latest/keyboard.html#the-press-keydown-and-keyup-functions
 import time  #Documentacion de librerias(biblotecas) utilizadas ---> https://docs.python.org/3/library/time.html
 import os #Documentacion de librerias(biblotecas) utilizadas --->  https://www.w3schools.com/python/module_os.asp
-import subprocess #Documentacion de librerias(biblotecas) utilizadas ---> https://docs.python.org/3/library/subprocess.html
+
+
+"""def app_abierta():
+    windows = pyautogui.getWindowsWithTitle("Excel")
+    return len(windows) > 0
+"""
+
 
 def blog_notas(): #Funcion  para abrir  el blog de notas
-    os.system("start notepad")
+    os.system("start excel")
     time.sleep(5) #Timepo designado para realizar operacion 
+    pyautogui.press('enter')#Preciona enter contrasea
+    time.sleep(0.5)
+
 
 def max_window(): #Funcion para abrir  la ventana
     pyautogui.hotkey('alt','space') #Preciona Alt + Espacio
     time.sleep(0.5)
     pyautogui.press('x') #Selecciona Maximisar 
-    time.sleep(0,5)
+    time.sleep(0.5)
+
 
 
 def user_password(usuario, contraseña): #Funcion que designa usuario y contraseña 
     pyautogui.write(usuario)#Escribir el usuario 
-    time.sleep(0.5) 
-    pyautogui.press('tab')#Precionar Tab
+    time.sleep(1) 
+    pyautogui.press('enter')#Preciona enter 
     time.sleep(0.5)
+    pyautogui.press('tab')#Precionar Tab
+    time.sleep(2)
     pyautogui.write(contraseña)#Escribe la contraseña
     time.sleep(0.5)
     pyautogui.press('enter')#Preciona enter 
-    time.sleep('0.5')
+    time.sleep(2)
     #Tiempo designado 0.5 segundos para todas las operacciones 
 
 
 # Script principal
+
 blog_notas()
 
-# Maximiza la ventana del Bloc de notas
-max_window()
+
+
+""" if not app_abierta():
+    blog_notas()
+
+
+elif blog_notas():
+    app_abierta
+"""
+
 
 # Agrega usuario y contraseña
 usuario = "usuario"
-contrasena = "contrasena"
-user_password(usuario, contrasena)
+contraseña = "contraseña"
+user_password(usuario, contraseña)
 
+# Maximiza la ventana del Bloc de notas
+max_window()
